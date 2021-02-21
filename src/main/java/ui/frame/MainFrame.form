@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ui.frame.MainFrame">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="1174" height="593"/>
+    </constraints>
+    <properties>
+      <opaque value="true"/>
+      <preferredSize width="1200" height="750"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="b9cb" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="60" height="200"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="0.0" ipadx="200" ipady="200"/>
+        </constraints>
+        <properties>
+          <preferredSize width="400" height="400"/>
+        </properties>
+        <border type="none" title="Console"/>
+        <children>
+          <scrollpane id="88dde">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <requestFocusEnabled value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="5f1c9" class="javax.swing.JTextPane" binding="console">
+                <constraints/>
+                <properties>
+                  <background color="-13948117"/>
+                  <editable value="true"/>
+                  <enabled value="true"/>
+                  <focusable value="true"/>
+                  <requestFocusEnabled value="true"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="d6306" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="200" height="263"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="2f14c" binding="projectJScrollPane">
+            <constraints border-constraint="West"/>
+            <properties>
+              <preferredSize width="200" height="400"/>
+              <requestFocusEnabled value="false"/>
+              <verifyInputWhenFocusTarget value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="d0eaf" class="javax.swing.JTree" binding="projectJTree">
+                <constraints/>
+                <properties>
+                  <maximumSize width="-1" height="-1"/>
+                  <preferredSize width="500" height="500"/>
+                  <requestFocusEnabled value="false"/>
+                  <verifyInputWhenFocusTarget value="false"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <tabbedpane id="dd9cb" binding="tabbedPane1" default-binding="true">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <preferredSize width="80" height="400"/>
+              <requestFocusEnabled value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="f916f" binding="dataDownloadPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Data Download"/>
+                </constraints>
+                <properties>
+                  <opaque value="true"/>
+                  <preferredSize width="1000" height="400"/>
+                  <requestFocusEnabled value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="aace2" layout-manager="GridBagLayout">
+                    <constraints border-constraint="South"/>
+                    <properties>
+                      <opaque value="true"/>
+                      <preferredSize width="1000" height="50"/>
+                      <requestFocusEnabled value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="ec767" class="javax.swing.JButton" binding="downloadButton">
+                        <constraints>
+                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Download"/>
+                        </properties>
+                      </component>
+                      <hspacer id="7e43f">
+                        <constraints>
+                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <vspacer id="99e0c">
+                        <constraints>
+                          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="8b51b" class="javax.swing.JButton" binding="refreshButton">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Refresh"/>
+                        </properties>
+                      </component>
+                      <hspacer id="16fd2">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="b3d34">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <component id="8df1c" class="javax.swing.JButton" binding="downloadImportButton">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Import"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <scrollpane id="aaf01" binding="downloadScrollPane">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <preferredSize width="1000" height="400"/>
+                      <requestFocusEnabled value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="43515" class="javax.swing.JTable" binding="downloadTagTable">
+                        <constraints/>
+                        <properties>
+                          <preferredScrollableViewportSize width="1000" height="400"/>
+                          <preferredSize width="1000" height="400"/>
+                          <requestFocusEnabled value="false"/>
+                          <rowSelectionAllowed value="false"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+              <grid id="f8f9f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Data Extraction"/>
+                </constraints>
+                <properties>
+                  <preferredSize width="0" height="400"/>
+                  <requestFocusEnabled value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <scrollpane id="36f56" binding="extractScrollPane">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <requestFocusEnabled value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="ca826" class="javax.swing.JTable" binding="extractTagTable">
+                        <constraints/>
+                        <properties>
+                          <requestFocusEnabled value="false"/>
+                          <rowSelectionAllowed value="false"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <grid id="5f843" layout-manager="GridBagLayout">
+                    <constraints border-constraint="South"/>
+                    <properties>
+                      <preferredSize width="1000" height="50"/>
+                      <requestFocusEnabled value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="ab30a" class="javax.swing.JButton" binding="extractButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <text value="Extract"/>
+                        </properties>
+                      </component>
+                      <hspacer id="f664c">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <vspacer id="e33c1">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="cb35a" class="javax.swing.JButton" binding="importButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Import"/>
+                        </properties>
+                      </component>
+                      <component id="10ec5" class="javax.swing.JButton" binding="extractRefresh">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Refresh"/>
+                        </properties>
+                      </component>
+                      <component id="79ed0" class="javax.swing.JButton" binding="exportButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Export"/>
+                        </properties>
+                      </component>
+                      <hspacer id="96ba2">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="2241a">
+                        <constraints>
+                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="8418b" binding="dataAnalysisPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <tabbedpane title="Data Analysis"/>
+                </constraints>
+                <properties>
+                  <preferredSize width="0" height="400"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="e60be" layout-manager="GridBagLayout">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <focusable value="false"/>
+                      <requestFocusEnabled value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <vspacer id="3961e">
+                        <constraints>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="d0e89" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="5e63d" class="javax.swing.JButton" binding="analysisRefresh">
+                        <constraints>
+                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Refresh"/>
+                        </properties>
+                      </component>
+                      <component id="1f8f9" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="1a7a3" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusable value="false"/>
+                          <text value="Source"/>
+                        </properties>
+                      </component>
+                      <component id="abb42" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <focusable value="false"/>
+                          <text value="Target"/>
+                        </properties>
+                      </component>
+                      <component id="2c880" class="javax.swing.JComboBox" binding="sourceComboBox">
+                        <constraints>
+                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0" ipadx="100"/>
+                        </constraints>
+                        <properties>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                        </properties>
+                      </component>
+                      <component id="1ae27" class="javax.swing.JComboBox" binding="targetComboBox">
+                        <constraints>
+                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                        </properties>
+                      </component>
+                      <component id="b7e45" class="javax.swing.JButton" binding="analysisButton" default-binding="true">
+                        <constraints>
+                          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusPainted value="false"/>
+                          <focusable value="false"/>
+                          <requestFocusEnabled value="false"/>
+                          <text value="Analysis"/>
+                        </properties>
+                      </component>
+                      <component id="4b74f" class="javax.swing.JLabel" binding="analysisTipLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Find all similar assumptions in Target for each assumption in Source"/>
+                        </properties>
+                      </component>
+                      <vspacer id="1ce84">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <vspacer id="cf57d">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <vspacer id="cfdf6">
+                        <constraints>
+                          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <vspacer id="6b56a">
+                        <constraints>
+                          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                      <vspacer id="17128">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </vspacer>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </tabbedpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
