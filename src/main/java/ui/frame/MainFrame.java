@@ -9,7 +9,6 @@ import core.analysis.SCASimilarity;
 import core.download.TagCrawl;
 import core.download.TagFileDownload;
 import core.extraction.SCADetector;
-import core.extraction.SCAFilter;
 import entity.Project;
 import entity.SCA;
 import entity.Tag;
@@ -17,7 +16,6 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import project.ProjectService;
-import ui.component.MyLabel;
 
 import javax.swing.*;
 import javax.swing.event.TreeExpansionEvent;
@@ -660,17 +658,25 @@ public class MainFrame extends JFrame {
                         // we assume that the tag is not null
                         Tag t = project.getTags().get(tag);
 
-                        Map<String, List<SCA>> res = SCAFilter.filter(t.getAssumptions());
-
                         String path = project.getFilePath() + File.separator + "tags" + File.separator + tag;
                         String fileName = project.getFramework() + "-" + tag + ".xlsx";
+
+                        List<SCA> fromSourceCode = new ArrayList<>();
+                        List<SCA> fromOthers = new ArrayList<>();
+
+                        for (SCA sca : t.getAssumptions()) {
+                            if (StringUtils.equal(sca.getType(), SCAEnums.SOURCE_CODE_COMMENT.getCode())) {
+                                fromSourceCode.add(sca);
+                            } else {
+                                fromOthers.add(sca);
+                            }
+                        }
 
                         try {
                             ExcelUtils.simpleWrite(path, fileName, new Class[] {SCA.class, SCA.class, String.class},
                                 new String[] {SCAEnums.SOURCE_CODE_COMMENT.getCode(),
                                     SCAEnums.NON_SOURCE_CODE_COMMENT.getCode(), "unhandledLines"},
-                                res.get(SCAEnums.SOURCE_CODE_COMMENT.getCode()),
-                                res.get(SCAEnums.NON_SOURCE_CODE_COMMENT.getCode()), t.getUnhandledLines());
+                                fromSourceCode, fromOthers);
 
                             return true;
                         } catch (Exception e) {
@@ -876,7 +882,7 @@ public class MainFrame extends JFrame {
     }
 
     private void openSCATab(Tag tag) {
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(1, 1));
 
         JScrollPane scrollPane = new JScrollPane();
 
@@ -935,7 +941,6 @@ public class MainFrame extends JFrame {
         scrollPane.putClientProperty("JScrollPane.smoothScrolling", true);
 
         panel.add(scrollPane);
-        panel.add(new MyLabel("Double Click the row to see the context!"), BorderLayout.SOUTH);
         panel.setPreferredSize(new Dimension(dataDownloadPanel.getWidth(), dataDownloadPanel.getHeight()));
         panel.setRequestFocusEnabled(false);
 
@@ -944,9 +949,11 @@ public class MainFrame extends JFrame {
     }
 
     private void openFileTab(String filePath, int line) {
+        // check whether line is valid
+        line = Math.max(line, 0);
+
         RSyntaxTextArea textPane = new RSyntaxTextArea();
-        textPane.setSyntaxEditingStyle(getFileSyntax(filePath));
-        textPane.setCodeFoldingEnabled(true);
+        textPane.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
         textPane.setBackground(new Color(0x2b2b2b));
         textPane.setForeground(new Color(0xa9b7c6));
         textPane.setCurrentLineHighlightColor(new Color(0x2b2b2b));
@@ -959,12 +966,13 @@ public class MainFrame extends JFrame {
         scrollPane.putClientProperty("JScrollPane.smoothScrolling", true);
         scrollPane.setRequestFocusEnabled(false);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(1, 1));
         panel.setPreferredSize(new Dimension(dataDownloadPanel.getWidth(), dataDownloadPanel.getHeight()));
         panel.setRequestFocusEnabled(false);
 
         int key = getWorkerKey();
 
+        int finalLine = line;
         SwingWorker<FileReader, String> worker = new SwingWorker<FileReader, String>() {
             File f = new File(filePath);
 
@@ -995,11 +1003,13 @@ public class MainFrame extends JFrame {
                         FileReader reader;
                         if ((reader = get()) != null) {
                             textPane.read(reader, null);
+                            textPane.addLineHighlight(Math.max(finalLine - 1, 0), Color.BLUE);
 
-                            double off = line / (textPane.getLineCount() * 1.0);
-                            JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
-                            scrollBar.setMaximum(scrollBar.getMaximumSize().height);
-                            scrollBar.setValue((int)(off * scrollBar.getMaximum()));
+                            // attempt to let the line be in the view.
+                            double off = Math.max(finalLine - 15, 0) / (textPane.getLineCount() * 1.0);
+                            int height = scrollPane.getViewport().getViewSize().height;
+                            height = (int)(height * off);
+                            scrollPane.getViewport().setViewPosition(new Point(0, height));
 
                             panel.add(scrollPane);
                             tabbedPane1.addTab(f.getName(), panel);
@@ -1025,6 +1035,8 @@ public class MainFrame extends JFrame {
         };
 
         registerWorker(key, worker);
+
+        int x = 1;
     }
 
     private String getFileSyntax(String fileName) {
@@ -1492,4 +1504,5 @@ public class MainFrame extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel1;
     }
+
 }

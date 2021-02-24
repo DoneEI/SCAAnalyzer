@@ -118,6 +118,9 @@ public class SCADetector {
 
         Map<String, List> res = new HashMap<>(2);
 
+        // filter
+        SCAFilter.filter(results);
+
         res.put("SCA", results);
         res.put("unhandledLines", unhandledLines);
 
