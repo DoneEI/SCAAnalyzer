@@ -37,10 +37,6 @@ public class SCASimilarity {
             Map<SCA, Double> tmp = new HashMap<>();
 
             for (int j = 0; j < t.size(); j++) {
-                if (s.get(i).equals(t.get(j))) {
-                    continue;
-                }
-
                 double score = similarity.similarity(s.get(i), t.get(j));
 
                 if (score > UserConfig.SCA_SIMILARITY_THRESHOLD) {
@@ -56,12 +52,13 @@ public class SCASimilarity {
         for (SCA sca : res.keySet()) {
             Map<SCA, Double> tmp = res.get(sca);
 
-            if (tmp.size() == 0) {
+            if (tmp.size() == 0 || (tmp.size() == 1 && tmp.containsKey(sca))) {
                 continue;
             }
 
             results.add(
-                "Assumption in " + sVersion + ": " + sca.getFilePath() + "(" + sca.getLine() + ") " + sca.getContent());
+                "Assumption in " + sVersion + ": " + sca.getFilePath() + "(" + sca.getLine() + "): "
+                    + sca.getContent());
 
             List<Map.Entry<SCA, Double>> list = new ArrayList<>(tmp.entrySet());
 
@@ -79,8 +76,13 @@ public class SCASimilarity {
 
             for (Map.Entry<SCA, Double> r : list) {
                 SCA sim = r.getKey();
+
+                if (sim.equals(sca)) {
+                    continue;
+                }
+
                 results.add(
-                    sim.getFilePath() + "(" + sim.getLine() + ") " + sim.getContent() + "  Score: " + tmp.get(sim));
+                    sim.getFilePath() + "(" + sim.getLine() + "): " + sim.getContent() + "  Score: " + tmp.get(sim));
             }
 
             results.add("------------------------------------------------------------------------------");
@@ -94,7 +96,7 @@ public class SCASimilarity {
         List<String> copy = new ArrayList<>(scaList.size());
 
         for (SCA s : scaList) {
-            copy.add(StringUtils.keepOrdinaryChar(s.getContent()));
+            copy.add(StringUtils.keepOrdinaryChar(s.getContent().toLowerCase()));
         }
 
         return copy;

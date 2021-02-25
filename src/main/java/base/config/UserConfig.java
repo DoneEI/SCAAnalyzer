@@ -63,19 +63,58 @@ public class UserConfig {
             p.load(in);
 
             // set values
-            SCA_DETECTOR_CONTENT_WINDOW = StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_CONTENT_WINDOW"))
-                ? Integer.parseInt(p.getProperty("SCA_DETECTOR_CONTENT_WINDOW")) : 1;
-            SCA_DETECTOR_THREAD_NUM = StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_THREAD_NUM"))
-                ? Integer.parseInt(p.getProperty("SCA_DETECTOR_THREAD_NUM")) : 3;
-            SCA_DETECTOR_LINES_MAX_CHARACTERS =
-                StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_LINES_MAX_CHARACTERS"))
-                    ? Integer.parseInt(p.getProperty("SCA_DETECTOR_LINES_MAX_CHARACTERS")) : 4096;
-            SCA_CONTEXT_WINDOW = StringUtils.isNotEmpty(p.getProperty("SCA_CONTEXT_WINDOW"))
-                ? Integer.parseInt(p.getProperty("SCA_CONTEXT_WINDOW")) : 50;
+            if (StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_CONTENT_WINDOW"))) {
+                int newValue = Integer.parseInt(p.getProperty("SCA_DETECTOR_CONTENT_WINDOW"));
+
+                if (newValue > 0) {
+                    SCA_DETECTOR_CONTENT_WINDOW = newValue;
+                } else {
+                    SCA_DETECTOR_CONTENT_WINDOW = 1;
+                }
+            }
+
+            if (StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_THREAD_NUM"))) {
+                int newValue = Integer.parseInt(p.getProperty("SCA_DETECTOR_THREAD_NUM"));
+
+                if (newValue > 0) {
+                    SCA_DETECTOR_THREAD_NUM = newValue;
+                } else {
+                    SCA_DETECTOR_THREAD_NUM = 3;
+                }
+            }
+
+            if (StringUtils.isNotEmpty(p.getProperty("SCA_DETECTOR_LINES_MAX_CHARACTERS"))) {
+                int newValue = Integer.parseInt(p.getProperty("SCA_DETECTOR_LINES_MAX_CHARACTERS"));
+
+                if (newValue > 0) {
+                    SCA_DETECTOR_LINES_MAX_CHARACTERS = newValue;
+                } else {
+                    SCA_DETECTOR_LINES_MAX_CHARACTERS = 4096;
+                }
+            }
+
+            if (StringUtils.isNotEmpty(p.getProperty("SCA_CONTEXT_WINDOW"))) {
+                int newValue = Integer.parseInt(p.getProperty("SCA_CONTEXT_WINDOW"));
+
+                if (newValue > 0) {
+                    SCA_CONTEXT_WINDOW = newValue;
+                } else {
+                    SCA_CONTEXT_WINDOW = 50;
+                }
+            }
+
+            if (StringUtils.isNotEmpty(p.getProperty("SCA_SIMILARITY_THRESHOLD"))) {
+                double newValue = Double.parseDouble(p.getProperty("SCA_SIMILARITY_THRESHOLD"));
+
+                if (newValue > 0 && newValue <= 1) {
+                    SCA_SIMILARITY_THRESHOLD = newValue;
+                } else {
+                    SCA_SIMILARITY_THRESHOLD = 0.7;
+                }
+            }
 
             if (StringUtils.isNotEmpty(p.getProperty("SCA_FILTER"))) {
                 String[] filter_types = p.getProperty("SCA_FILTER").split(",");
-
                 SCA_FILTER = new HashSet<>(Arrays.asList(filter_types));
             }
 
